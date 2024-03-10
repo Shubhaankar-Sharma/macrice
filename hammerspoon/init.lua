@@ -86,9 +86,13 @@ hs.hotkey.bind(hyper, "return", function()
 end)
 
 -- yabai integration..
+local yabaiCli = '/opt/homebrew/bin/yabai'
 local function yabaiExec(cmd)
-  local _cmd = '/opt/homebrew/bin/yabai -m ' .. cmd
+  local _cmd = yabaiCli .. ' -m ' .. cmd
   return hs.execute(_cmd, false)
+end
+local function exec(cmd)
+  return hs.execute(cmd, false)
 end
 
 hs.hotkey.bind(hyper, "left", function()
@@ -204,6 +208,13 @@ end)
 -- hs.hotkey.bind(hyper, "h", function()
 --   yabaiExec('window --grid 1:3:0:0:2:1')
 -- end)
+
+hs.hotkey.bind(hyper, ";", function()
+  exec(yabaiCli .. ' -m window --resize right:-200:0 2> /dev/null || ' .. yabaiCli .. ' -m window --resize left:-200:0 2> /dev/null')
+end)
+hs.hotkey.bind(hyper, "'", function()
+  exec(yabaiCli .. ' -m window --resize right:200:0 2> /dev/null || ' .. yabaiCli .. ' -m window --resize left:200:0 2> /dev/null')
+end)
 
 
 -- Spotify controls -- next/prev/play-pause

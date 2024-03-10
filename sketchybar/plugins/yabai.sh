@@ -73,8 +73,8 @@ case "$SENDER" in
   ;;
   "forced") exit 0
   ;;
-  "window_focus") window_state 
-  ;;
+  # "window_focus") window_state 
+  # ;;
   "space_windows_change" | "space_change") windows_on_spaces
   ;;
 esac
