@@ -32,6 +32,3 @@ ln -s `pwd`/hammerspoon $HOME/.hammerspoon
 ln -s `pwd`/yabai $HOME/.config/yabai
 ln -s `pwd`/sketchybar $HOME/.config/sketchybar
 ```
-
-TODO finish instructions..
-
