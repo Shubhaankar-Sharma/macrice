@@ -12,10 +12,17 @@ macOS unixified.
 
 ## Install
 
-First install Karabiner-Elements if you'd like to setup the CAPSLOCK
-as your hotkey (alt+ctrl+shift). https://karabiner-elements.pqrs.org/
+First, install [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
+if you'd like to setup the CAPSLOCK as your hotkey (alt+ctrl+shift).
+https://karabiner-elements.pqrs.org/
 
-Second copy the macrice repo and symlink folders:
+Second, install:
+* [yabai](https://github.com/koekeishiya/yabai)
+* [Hammerspoon](https://www.hammerspoon.org/)
+* [Sketchybar](https://github.com/FelixKratz/SketchyBar)
+
+Third, copy the macrice repo if you'd like to get started with the
+same setup as in screenshot:
 
 ```bash
 cd ./config
