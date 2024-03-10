@@ -12,7 +12,7 @@ macOS unixified.
 
 ## Install
 
-First, install [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
+First, install: [Karabiner-Elements](https://karabiner-elements.pqrs.org/)
 if you'd like to setup the CAPSLOCK as your hotkey (alt+ctrl+shift).
 https://karabiner-elements.pqrs.org/
 
