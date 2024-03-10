@@ -7,7 +7,7 @@ macOS unixified.
 
 * yabai -- tiling window manage
 * Karabiner-Elements -- settings CAPSLOCK as hyper key (alt+ctrl+shift)
-* Hammerspoon -- programmable Lua interfaces for global keyboard hotkeys and controls
+* Hammerspoon -- programmable Lua interfaces for global keyboard hotkeys, fast app launching/switching and spaces/windows controls
 * Sketchybar -- custom menu bar
 
 ## Install
@@ -27,6 +27,10 @@ same setup as in screenshot:
 ```bash
 cd ./config
 git clone git@github.com:pkieltyka/macrice.git
+cd ./macrice
+ln -s `pwd`/hammerspoon $HOME/.hammerspoon
+ln -s `pwd`/yabai $HOME/.config/yabai
+ln -s `pwd`/sketchybar $HOME/.config/sketchybar
 ```
 
 TODO finish instructions..
