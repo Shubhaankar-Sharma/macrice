@@ -89,6 +89,7 @@ ICON_MAP = [
     {"regex": r"Pine", "icon": ":pine:"},
     {"regex": r"Podcasts", "icon": ":podcasts:"},
     {"regex": r"PomoDone App", "icon": ":pomodone:"},
+    {"regex": r"Postico", "icon": ":text:"},
     {"regex": r"Preview|Skim|zathura", "icon": ":pdf:"},
     {"regex": r"qutebrowser", "icon": ":qute_browser:"},
     {"regex": r"Reeder", "icon": ":reeder5:"},
