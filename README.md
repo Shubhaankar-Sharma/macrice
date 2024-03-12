@@ -5,7 +5,7 @@ macOS unixified.
 
 <img src="./screenshot.png" />
 
-* yabai -- tiling window manage
+* yabai -- tiling window manager
 * Karabiner-Elements -- settings CAPSLOCK as hyper key (alt+ctrl+shift)
 * Hammerspoon -- programmable Lua interfaces for global keyboard hotkeys, fast app launching/switching and spaces/windows controls
 * Sketchybar -- custom menu bar
