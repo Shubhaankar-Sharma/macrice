@@ -26,19 +26,18 @@ local term = 'Warp'
 
 -- Global hot-key apps for fast-app launching and switching
 local hotApps = {
-  s = { id = 'Google Chrome' },
+  a = { id = 'Arc' },
   t = { id = term },
-  e = { id = 'Code' },
-  p = { id = 'Preview' },
-  g = { id = 'Safari' },
-  x = { id = 'Xcode', singleton = true },
+  x = { id = 'Visual Studio Code' },
+  -- p = { id = 'Preview' },
+  -- g = { id = 'Safari' },
+  -- x = { id = 'Xcode', singleton = true },
   k = { id = 'Discord', singleton = true },
   j = { id = 'Slack', singleton = true },
-  a = { id = 'Messages', singleton = true },
-  i = { id = 'Spotify', singleton = true },
-  n = { id = 'Notion', singleton = true },
+  w = { id = 'WhatsApp', singleton = true },
+  s = { id = 'Spotify', singleton = true },
   -- m = { id = 'Simulator', singleton = true },
-  m = { id = 'Postman', singleton = true },
+  -- m = { id = 'Postman', singleton = true },
 }
 
 hs.hotkey.bind(hyperc, 'return', function()
@@ -143,6 +142,14 @@ hs.hotkey.bind(hyper, "pagedown", function()
 end)
 hs.hotkey.bind(hyper, "pageup", function()
   yabaiExec('space --focus prev')
+end)
+
+hs.hotkey.bind(hyperc, "n", function()
+  yabaiExec('space --create')
+end)
+
+hs.hotkey.bind(hyperc, "b", function()
+  yabaiExec('space --destroy')
 end)
 
 hs.hotkey.bind(hyper, "1", function()
