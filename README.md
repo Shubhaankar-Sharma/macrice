@@ -20,6 +20,7 @@ Second, install:
 * [yabai](https://github.com/koekeishiya/yabai)
 * [Hammerspoon](https://www.hammerspoon.org/)
 * [Sketchybar](https://github.com/FelixKratz/SketchyBar)
+	* brew install --cask sf-symbols
 
 Third, copy the macrice repo if you'd like to get started with the
 same setup as in screenshot:
