@@ -132,11 +132,15 @@ end)
 
 -- spaces
 hs.hotkey.bind(hyper, "]", function()
-  yabaiExec('space --focus next')
+  yabaiExec('space --focus next || space --focus first')
 end)
 hs.hotkey.bind(hyper, "[", function()
-  yabaiExec('space --focus prev')
+  yabaiExec('space --focus prev || space --focus last')
 end)
+hs.hotkey.bind(hyper, "tab", function()
+  yabaiExec('space --focus recent')
+end)
+
 hs.hotkey.bind(hyper, "pagedown", function()
   yabaiExec('space --focus next')
 end)
