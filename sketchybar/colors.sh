@@ -13,22 +13,24 @@ export WHITE=0xffffffff
 # export ACCENT_COLOR=0xffffffff
 
 # -- Purple Scheme --
-export BAR_COLOR=0xff211232
-export ITEM_BG_COLOR=0xff211232
-export ACCENT_COLOR=0xffc785ff
-export SELECTED_BG_COLOR=0xff211232
-export BACKGROUND_1=0x603c3e4f
-export BACKGROUND_2=0x60494d64
+# export BAR_COLOR=0xff211232
+# export ITEM_BG_COLOR=0xff211232
+# export ACCENT_COLOR=0xffc785ff
+# export SELECTED_BG_COLOR=0xff211232
+# export BACKGROUND_1=0x603c3e4f
+# export BACKGROUND_2=0x60494d64
 # -- Red Scheme ---
 # export BAR_COLOR=0xff23090e
 # export ITEM_BG_COLOR=0xff591221
 # export ACCENT_COLOR=0xffff2453
 
 # -- Blue Scheme --- 
-# export BAR_COLOR=0xff021254
-# export ITEM_BG_COLOR=0xff093aa8
-# export ACCENT_COLOR=0xff15bdf9
-
+export BAR_COLOR=0xff021254
+export ITEM_BG_COLOR=0xff021254
+export ACCENT_COLOR=0xff15bdf9
+export SELECTED_BG_COLOR=0xff15bdf9
+export BACKGROUND_1=0x603c3e4f
+export BACKGROUND_2=0x60494d64
 # -- Green Scheme --
 # export BAR_COLOR=0xff003315
 # export ITEM_BG_COLOR=0xff008c39
