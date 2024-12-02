@@ -19,7 +19,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 
 sketchybar --bar height=28        \
                  blur_radius=30   \
-                 position=top     \
+                 position=bottom     \
                  sticky=off       \
                  padding_left=10  \
                  padding_right=10 \
@@ -72,12 +72,14 @@ source $ITEM_DIR/front_app.sh
 source $ITEM_DIR/media.sh
 
 # -- Right Side Items --
-source $ITEM_DIR/calendar.sh
+# source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/volume.sh
-source $ITEM_DIR/battery.sh
+# source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
-
-
+source $PLUGIN_DIR/icon_map_fn.sh
+# source ./icon_map.sh
+# __icon_map "${app_name}"
+# symbol_ligature="${icon_result}"
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
 # force all scripts to run the first time, it should never be run in an item script.

@@ -38,14 +38,14 @@ yabai -m config top_padding                  04
 yabai -m config bottom_padding               04
 yabai -m config left_padding                 04
 yabai -m config right_padding                04
-yabai -m config window_gap                   04
+yabai -m config window_gap                   02
 
 # for external display, etc.
-yabai -m config external_bar all:35:0
+yabai -m config external_bar all:0:30
 
 # float system preferences
-yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^Finder" manage=off
+# yabai -m rule --add app="^System Preferences$" manage=off
+# yabai -m rule --add app="^Finder" manage=off
 # yabai -m rule --add app="^Messages$" manage=off
 # yabai -m rule --add app="^Discord$" manage=off
 # yabai -m rule --add app="^Notion$" manage=off
