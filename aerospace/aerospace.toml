@@ -1,0 +1,212 @@
+# AeroSpace Configuration
+# Place this file in ~/.config/aerospace/aerospace.toml
+
+# Core behavior settings
+after-login-command = []
+after-startup-command = []
+
+# Execute sketchybar event handler on workspace changes
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Default to v_accordion layout (vertical stacking like i3)
+accordion-padding = 30
+
+# Mouse follows focus
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Gaps and padding (mimicking your yabai setup: 4px padding, 2px gaps)
+# Bottom padding increased to 40px to account for sketchybar (28px bar + margins)
+[gaps]
+inner.horizontal = 2
+inner.vertical = 2
+outer.left = 4
+outer.bottom = 40
+outer.top = 4
+outer.right = 4
+
+# Define the main binding mode
+[mode.main.binding]
+
+# Hyper key = Alt+Ctrl+Shift (your caps lock mapping)
+# Hyperc = Cmd+Alt+Ctrl+Shift
+
+# ==========================================
+# WINDOW NAVIGATION (hyper + arrows)
+# ==========================================
+alt-ctrl-shift-left = 'focus left'
+alt-ctrl-shift-down = 'focus down'
+alt-ctrl-shift-up = 'focus up'
+alt-ctrl-shift-right = 'focus right'
+
+# Vi-style navigation (bonus!)
+alt-ctrl-shift-h = 'focus left'
+alt-ctrl-shift-j = 'focus down'
+alt-ctrl-shift-k = 'focus up'
+alt-ctrl-shift-l = 'focus right'
+
+# ==========================================
+# WINDOW MOVEMENT (hyperc + arrows)
+# ==========================================
+cmd-alt-ctrl-shift-left = 'move left'
+cmd-alt-ctrl-shift-down = 'move down'
+cmd-alt-ctrl-shift-up = 'move up'
+cmd-alt-ctrl-shift-right = 'move right'
+
+# Vi-style movement
+cmd-alt-ctrl-shift-h = 'move left'
+cmd-alt-ctrl-shift-j = 'move down'
+cmd-alt-ctrl-shift-k = 'move up'
+cmd-alt-ctrl-shift-l = 'move right'
+
+# ==========================================
+# SPACE NAVIGATION
+# ==========================================
+# Next/Previous space (hyper + bracket keys)
+alt-ctrl-shift-rightSquareBracket = 'workspace next --wrap-around'
+alt-ctrl-shift-leftSquareBracket = 'workspace prev --wrap-around'
+
+# Recent workspace (hyper + tab)
+alt-ctrl-shift-tab = 'workspace-back-and-forth'
+
+# ==========================================
+# DIRECT WORKSPACE SWITCHING (hyper + 1-9)
+# Replacing Apple shortcuts with aerospace native
+# ==========================================
+alt-ctrl-shift-1 = 'workspace 1'
+alt-ctrl-shift-2 = 'workspace 2'
+alt-ctrl-shift-3 = 'workspace 3'
+alt-ctrl-shift-4 = 'workspace 4'
+alt-ctrl-shift-5 = 'workspace 5'
+alt-ctrl-shift-6 = 'workspace 6'
+alt-ctrl-shift-7 = 'workspace 7'
+alt-ctrl-shift-8 = 'workspace 8'
+alt-ctrl-shift-9 = 'workspace 9'
+alt-ctrl-shift-0 = 'workspace 10'
+
+# ==========================================
+# MOVE WINDOW TO WORKSPACE (hyperc + 1-9)
+# ==========================================
+cmd-alt-ctrl-shift-1 = 'move-node-to-workspace 1'
+cmd-alt-ctrl-shift-2 = 'move-node-to-workspace 2'
+cmd-alt-ctrl-shift-3 = 'move-node-to-workspace 3'
+cmd-alt-ctrl-shift-4 = 'move-node-to-workspace 4'
+cmd-alt-ctrl-shift-5 = 'move-node-to-workspace 5'
+cmd-alt-ctrl-shift-6 = 'move-node-to-workspace 6'
+cmd-alt-ctrl-shift-7 = 'move-node-to-workspace 7'
+cmd-alt-ctrl-shift-8 = 'move-node-to-workspace 8'
+cmd-alt-ctrl-shift-9 = 'move-node-to-workspace 9'
+cmd-alt-ctrl-shift-0 = 'move-node-to-workspace 10'
+
+# ==========================================
+# WINDOW MANAGEMENT
+# ==========================================
+# Fullscreen toggle (hyper + f)
+alt-ctrl-shift-f = 'fullscreen'
+
+# Rotate layout (hyper + r)
+alt-ctrl-shift-r = 'layout h_tiles v_tiles'
+
+# Float/unfloat window (hyper + space)
+alt-ctrl-shift-space = 'layout floating tiling'
+
+# Toggle split orientation (hyper + v)
+alt-ctrl-shift-v = 'layout h_tiles v_tiles'
+
+# Vertical accordion/stacking layout (alt + s)
+alt-s = 'layout v_accordion'
+
+# ==========================================
+# WINDOW RESIZING
+# ==========================================
+# Enter resize mode (hyper + =)
+alt-ctrl-shift-equal = 'mode resize'
+
+# Quick resize (hyper + semicolon/quote from your setup)
+alt-ctrl-shift-semicolon = 'resize smart -50'
+alt-ctrl-shift-quote = 'resize smart +50'
+
+# ==========================================
+# WORKSPACE MANAGEMENT
+# ==========================================
+# Note: AeroSpace creates workspaces dynamically when you switch to them
+# and destroys empty workspaces automatically
+
+# Balance window sizes (hyperc + b)
+cmd-alt-ctrl-shift-b = 'balance-sizes'
+
+# ==========================================
+# UTILITY COMMANDS
+# ==========================================
+# Reload config (hyperc + r)
+cmd-alt-ctrl-shift-r = 'reload-config'
+
+# ==========================================
+# RESIZE MODE
+# ==========================================
+[mode.resize.binding]
+# Use arrow keys or hjkl to resize in resize mode
+left = 'resize width -50'
+down = 'resize height +50'
+up = 'resize height -50'
+right = 'resize width +50'
+
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+
+# Exit resize mode
+enter = 'mode main'
+esc = 'mode main'
+
+# ==========================================
+# WORKSPACE-TO-MONITOR ASSIGNMENT
+# ==========================================
+# Assign workspace 11 to laptop (Built-in Retina Display)
+[workspace-to-monitor-force-assignment]
+11 = 'Built-in Retina Display'
+1 = 'DELL S2721HN'
+2 = 'DELL S2721HN'
+3 = 'DELL S2721HN'
+4 = 'DELL S2721HN'
+5 = 'DELL S2721HN'
+6 = 'DELL S2721HN'
+7 = 'DELL S2721HN'
+8 = 'DELL S2721HN'
+9 = 'DELL S2721HN'
+10 = 'DELL S2721HN'
+
+# ==========================================
+# FLOATING WINDOW RULES
+# ==========================================
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+check-further-callbacks = true
+run = []
+
+# ==========================================
+# FLOATING WINDOWS BY DEFAULT (optional)
+# ==========================================
+# Add apps that should always float
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'

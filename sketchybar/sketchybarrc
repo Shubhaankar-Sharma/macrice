@@ -64,6 +64,9 @@ sketchybar --default icon.font="SF Pro:Bold:13.0"  \
                      icon.padding_left=10                  \
                      icon.padding_right=4
 
+# -- Define aerospace workspace change event BEFORE loading spaces --
+sketchybar --add event aerospace_workspace_change
+
 # -- Left Side Items --
 source $ITEM_DIR/spaces.sh
 source $ITEM_DIR/front_app.sh

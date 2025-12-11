@@ -8,14 +8,18 @@ export WHITE=0xffffffff
 # export ACCENT_COLOR=0xff2cf9ed
 
 # -- Gray Scheme --
-# export BAR_COLOR=0xff101314
-# export ITEM_BG_COLOR=0xff353c3f
-# export ACCENT_COLOR=0xffffffff
+export BAR_COLOR=0xff101314
+export ITEM_BG_COLOR=0xff353c3f
+export ACCENT_COLOR=0xffffffff
+export BACKGROUND_1=0x60353c3f
+export BACKGROUND_2=0x60494d64
+export GREY=0xff9ca3af
+export RED=0xffed8796
 
 # -- Purple Scheme --
-export BAR_COLOR=0xff211232
-export ITEM_BG_COLOR=0xff211232
-export ACCENT_COLOR=0xffc785ff
+# export BAR_COLOR=0xff211232
+# export ITEM_BG_COLOR=0xff211232
+# export ACCENT_COLOR=0xffc785ff
 # export SELECTED_BG_COLOR=0xff211232
 # export BACKGROUND_1=0x603c3e4f
 # export BACKGROUND_2=0x60494d64

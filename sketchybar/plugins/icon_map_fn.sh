@@ -126,6 +126,9 @@ function icon_map() {
    "Code" | "Code - Insiders")
         icon_result=":code:"
         ;;
+    "Comet")
+        icon_result=":comet:"
+        ;;
    "Cold Turkey Blocker")
         icon_result=":cold_turkey_blocker:"
         ;;
