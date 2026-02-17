@@ -64,8 +64,9 @@ sketchybar --default icon.font="SF Pro:Bold:13.0"  \
                      icon.padding_left=10                  \
                      icon.padding_right=4
 
-# -- Define aerospace workspace change event BEFORE loading spaces --
+# -- Define events BEFORE loading spaces --
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event claude_session_change
 
 # -- Left Side Items --
 source $ITEM_DIR/spaces.sh
@@ -86,5 +87,11 @@ source $PLUGIN_DIR/icon_map_fn.sh
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
 # force all scripts to run the first time, it should never be run in an item script.
+
+# -- Periodic refresh to clean up stale Claude sessions (every 30s) --
+sketchybar --add item claude_refresh left \
+           --set claude_refresh update_freq=5 \
+                                script="$PLUGIN_DIR/claude_refresh.sh" \
+                                drawing=off
 
 sketchybar --update

@@ -12,14 +12,24 @@ exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_w
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
+# flatten-containers disabled to allow i3-like spiral/dwindle tiling
+enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# Default to v_accordion layout (vertical stacking like i3)
+# Layout settings - CRITICAL for proper tiling
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
 accordion-padding = 30
+
+# Prevent hidden apps from breaking tiling
+automatically-unhide-macos-hidden-apps = true
 
 # Mouse follows focus
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Key mapping
+[key-mapping]
+preset = 'qwerty'
 
 # Gaps and padding (mimicking your yabai setup: 4px padding, 2px gaps)
 # Bottom padding increased to 40px to account for sketchybar (28px bar + margins)
@@ -81,9 +91,9 @@ alt-ctrl-shift-tab = 'workspace-back-and-forth'
 # ==========================================
 alt-ctrl-shift-1 = 'workspace 1'
 alt-ctrl-shift-2 = 'workspace 2'
-alt-ctrl-shift-3 = 'workspace 3'
-alt-ctrl-shift-4 = 'workspace 4'
-alt-ctrl-shift-5 = 'workspace 5'
+alt-ctrl-shift-3 = 'workspace neki'
+alt-ctrl-shift-4 = 'workspace holoscan'
+alt-ctrl-shift-5 = 'workspace synctest'
 alt-ctrl-shift-6 = 'workspace 6'
 alt-ctrl-shift-7 = 'workspace 7'
 alt-ctrl-shift-8 = 'workspace 8'
@@ -93,16 +103,16 @@ alt-ctrl-shift-0 = 'workspace 10'
 # ==========================================
 # MOVE WINDOW TO WORKSPACE (hyperc + 1-9)
 # ==========================================
-cmd-alt-ctrl-shift-1 = 'move-node-to-workspace 1'
-cmd-alt-ctrl-shift-2 = 'move-node-to-workspace 2'
-cmd-alt-ctrl-shift-3 = 'move-node-to-workspace 3'
-cmd-alt-ctrl-shift-4 = 'move-node-to-workspace 4'
-cmd-alt-ctrl-shift-5 = 'move-node-to-workspace 5'
-cmd-alt-ctrl-shift-6 = 'move-node-to-workspace 6'
-cmd-alt-ctrl-shift-7 = 'move-node-to-workspace 7'
-cmd-alt-ctrl-shift-8 = 'move-node-to-workspace 8'
-cmd-alt-ctrl-shift-9 = 'move-node-to-workspace 9'
-cmd-alt-ctrl-shift-0 = 'move-node-to-workspace 10'
+cmd-alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-3 = ['move-node-to-workspace neki', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-4 = ['move-node-to-workspace holoscan', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-5 = ['move-node-to-workspace synctest', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-6 = ['move-node-to-workspace 6', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'exec-and-forget sketchybar --trigger space_windows_change']
+cmd-alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'exec-and-forget sketchybar --trigger space_windows_change']
 
 # ==========================================
 # WINDOW MANAGEMENT
@@ -118,6 +128,12 @@ alt-ctrl-shift-space = 'layout floating tiling'
 
 # Toggle split orientation (hyper + v)
 alt-ctrl-shift-v = 'layout h_tiles v_tiles'
+
+# i3-style split commands (set direction BEFORE opening next window)
+# hyper + backslash = next window opens to the right (horizontal split)
+# hyper + minus = next window opens below (vertical split)
+alt-ctrl-shift-backslash = 'split horizontal'
+alt-ctrl-shift-minus = 'split vertical'
 
 # Vertical accordion/stacking layout (alt + s)
 alt-s = 'layout v_accordion'
@@ -147,6 +163,9 @@ cmd-alt-ctrl-shift-b = 'balance-sizes'
 # Reload config (hyperc + r)
 cmd-alt-ctrl-shift-r = 'reload-config'
 
+# Enter service mode (hyper + s) - for fixing tiling issues
+alt-ctrl-shift-s = 'mode service'
+
 # ==========================================
 # RESIZE MODE
 # ==========================================
@@ -167,6 +186,22 @@ enter = 'mode main'
 esc = 'mode main'
 
 # ==========================================
+# SERVICE MODE (for fixing tiling issues)
+# Enter with: hyper + s
+# ==========================================
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']  # Reset/flatten broken layout
+f = ['layout floating tiling', 'mode main']  # Toggle floating/tiling
+b = ['balance-sizes', 'mode main']           # Balance all window sizes
+
+# Join windows in direction (useful for manual tiling control)
+h = ['join-with left', 'mode main']
+j = ['join-with down', 'mode main']
+k = ['join-with up', 'mode main']
+l = ['join-with right', 'mode main']
+
+# ==========================================
 # WORKSPACE-TO-MONITOR ASSIGNMENT
 # ==========================================
 # Assign workspace 11 to laptop (Built-in Retina Display)
@@ -174,9 +209,9 @@ esc = 'mode main'
 11 = 'Built-in Retina Display'
 1 = 'DELL S2721HN'
 2 = 'DELL S2721HN'
-3 = 'DELL S2721HN'
-4 = 'DELL S2721HN'
-5 = 'DELL S2721HN'
+neki = 'DELL S2721HN'
+holoscan = 'DELL S2721HN'
+synctest = 'DELL S2721HN'
 6 = 'DELL S2721HN'
 7 = 'DELL S2721HN'
 8 = 'DELL S2721HN'
@@ -191,22 +226,18 @@ if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.SystemPreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.ActivityMonitor'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
 run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 check-further-callbacks = true
 run = []
-
-# ==========================================
-# FLOATING WINDOWS BY DEFAULT (optional)
-# ==========================================
-# Add apps that should always float
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.calculator'
-run = 'layout floating'

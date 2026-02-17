@@ -21,8 +21,8 @@ end)
 
 -- TODO: make a spoon called "elux.spoon" with all my methods, and config, etc
 
-local term = 'Warp'
--- local term = 'iTerm'
+local term = 'Ghostty'
+-- local term = 'Warp'
 
 -- Global hot-key apps for fast-app launching and switching
 local hotApps = {

@@ -132,6 +132,9 @@ function icon_map() {
    "Cold Turkey Blocker")
         icon_result=":cold_turkey_blocker:"
         ;;
+   "Conductor")
+        icon_result="🪄"
+        ;;
    "Color Picker" | "数码测色计")
         icon_result=":color_picker:"
         ;;

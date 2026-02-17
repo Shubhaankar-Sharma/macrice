@@ -1,1 +1,3 @@
-karabiner/automatic_backups
+.DS_Store
+karabiner/.config/karabiner/automatic_backups/
+claude/.claude/branches/

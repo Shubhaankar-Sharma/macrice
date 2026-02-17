@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Get all workspaces from aerospace
-SPACE_SIDS=(1 2 3 4 5 6 7 8 9 10)
+# Dynamically get all workspaces from aerospace
+SPACE_SIDS=($(aerospace list-workspaces --all 2>/dev/null))
 
 for sid in "${SPACE_SIDS[@]}"
 do
   sketchybar --add item space.$sid left                                 \
-             --set space.$sid icon=$sid                                 \
+             --set space.$sid icon="$sid"                               \
                               icon.padding_left=10                      \
                               icon.padding_right=10                     \
                               padding_left=2                            \
@@ -23,7 +23,7 @@ do
                               label.drawing=on                          \
                               click_script="aerospace workspace $sid"    \
                               script="$PLUGIN_DIR/aerospace.sh $sid"     \
-             --subscribe space.$sid aerospace_workspace_change
+             --subscribe space.$sid aerospace_workspace_change claude_session_change
 done
 
 sketchybar --add item space_separator left                             \
