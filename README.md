@@ -1,146 +1,80 @@
 # macrice
 
-macOS desktop rice. AeroSpace + SketchyBar + Hammerspoon + Karabiner + Claude Code.
+My macOS desktop setup: **OmniWM + Raycast + Warp**.
 
-<img src="./screenshot.png" />
-
-## Stack
-
-- **[AeroSpace](https://github.com/nikitabobko/AeroSpace)** -- i3-like tiling window manager
-- **[SketchyBar](https://github.com/FelixKratz/SketchyBar)** -- custom menu bar with dynamic workspace indicators
-- **[Hammerspoon](https://www.hammerspoon.org/)** -- app launching hotkeys and media controls
-- **[Karabiner-Elements](https://karabiner-elements.pqrs.org/)** -- Caps Lock remapped to Hyper key (Alt+Ctrl+Shift)
-- **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** -- AI session tracking with visual status in SketchyBar
-
-## Prerequisites
-
-```bash
-brew install koekeishiya/formulae/sketchybar
-brew install --cask nikitabobko/tap/aerospace
-brew install --cask hammerspoon
-brew install --cask karabiner-elements
-brew install --cask sf-symbols
-brew install --cask font-sf-pro
-brew install stow
-```
-
-Fonts: SketchyBar uses **SF Pro** for labels and **SF Symbols** for icons. Both are installed via the brew commands above.
+OmniWM handles Dwindle tiling, workspaces, a bottom workspace bar, and Caps Lock as Hyper. Raycast stays the launcher; Warp stays the terminal. No AeroSpace, SketchyBar, Hammerspoon, or Karabiner required.
 
 ## Install
 
+Requires Apple Silicon and macOS 26 or later. This config was captured from OmniWM **0.7.6**, settings schema **4**. Newer versions may migrate the file.
+
+With [Homebrew](https://brew.sh) installed:
+
 ```bash
-git clone git@github.com:Shubhaankar-Sharma/macrice.git ~/config/macrice
+git clone https://github.com/Shubhaankar-Sharma/macrice.git ~/config/macrice
 cd ~/config/macrice
 ./install.sh
 ```
 
-Or manually with stow:
+The installer installs OmniWM if missing and copies the tracked config to `${XDG_CONFIG_HOME:-$HOME/.config}/omniwm/settings.toml`. It backs up a different existing config before replacing it. It does not launch OmniWM, uninstall apps, or modify other tools' configs. Stow and extra fonts are not needed.
+
+Install Raycast and Warp separately if needed:
 
 ```bash
-cd ~/config/macrice
-stow aerospace sketchybar hammerspoon karabiner
+brew install --cask raycast warp
 ```
 
-Each top-level directory is a [GNU Stow](https://www.gnu.org/software/stow/) package that mirrors `$HOME`. Running `stow <package>` symlinks everything into the right place.
-
-The Claude hooks live in `claude-hooks/` as a reference — copy them into `~/.claude/hooks/` since that directory has other user-specific files that can't be stowed.
+Open OmniWM and grant **Accessibility** and **Input Monitoring**. Enable **Displays have separate Spaces** in System Settings → Desktop & Dock → Mission Control; log out and back in if you change it. Screen Recording is optional for Overview thumbnails. Enable **Start at Login** in OmniWM if wanted; this is not stored in the TOML file.
 
 ## Keybindings
 
-Caps Lock is remapped to **Hyper** (Alt+Ctrl+Shift) via Karabiner. Adding Cmd gives **Hyperc** (Cmd+Alt+Ctrl+Shift).
+**Hold Caps Lock** to use Hyper (`Control + Option`). Command and Shift remain available as extra modifiers.
 
-### Window Management (AeroSpace)
+| Shortcut | Action |
+| --- | --- |
+| Caps + arrows | Focus window left/down/up/right |
+| Caps + Command + arrows | Move window within workspace |
+| Caps + Command + Shift + arrows | Send window to adjacent monitor |
+| Caps + 1–9 / 0 | Switch to workspace 1–10 |
+| Caps + Command + 1–9 / 0 | Send window to workspace 1–10 |
+| Caps + [ / ] | Previous / next workspace |
+| Caps + Tab | Toggle last workspace |
+| Caps + F | Toggle layout fullscreen |
+| Caps + Space | Toggle floating / tiled |
+| Caps + R | Toggle Dwindle split orientation |
+| Caps + ; / ' | Shrink / grow focused window |
+| Caps + Shift + B | Balance window sizes |
 
-| Key | Action |
-|-----|--------|
-| hyper + h/j/k/l | Focus window left/down/up/right |
-| hyper + arrows | Focus window (arrow keys) |
-| hyperc + h/j/k/l | Move window left/down/up/right |
-| hyper + 1-9, 0 | Switch to workspace 1-10 |
-| hyperc + 1-9, 0 | Move window to workspace 1-10 |
-| hyper + [ / ] | Previous / next workspace |
-| hyper + tab | Toggle last workspace |
-| hyper + f | Toggle fullscreen |
-| hyper + space | Toggle floating / tiling |
-| hyper + r | Rotate layout |
-| hyper + \ | Split horizontal |
-| hyper + - | Split vertical |
-| hyper + ; / ' | Shrink / grow window |
-| hyper + = | Enter resize mode (then hjkl) |
-| hyper + s | Enter service mode |
-| hyperc + b | Balance window sizes |
-| hyperc + r | Reload AeroSpace config |
+These are the main bindings; the TOML file also retains other OmniWM defaults. Raycast shortcuts are managed in Raycast and are not exported here.
 
-### App Launching (Hammerspoon)
+**Caps + Enter → new Warp window is not configured yet.** OmniWM's built-in quake terminal is separate from Warp.
 
-| Key | App |
-|-----|-----|
-| hyper + a | Arc |
-| hyper + t | Ghostty |
-| hyper + x | VS Code |
-| hyper + j | Slack |
-| hyper + k | Discord |
-| hyper + w | WhatsApp |
-| hyper + s | Spotify |
-| hyper + return | New terminal window |
-| hyper + l | Lock screen |
+## Displays and appearance
 
-### Media (Hammerspoon)
+- All ten workspaces use **Dwindle**.
+- Workspace **6** belongs to the secondary display (the laptop in my current setup); the others belong to the main display (Dell).
+- macOS currently places the laptop to the right: Caps + Command + Shift + Right sends a window there; Left sends it back. Caps + 6 focuses the laptop workspace.
+- Monitor shortcuts follow macOS display arrangement. Adjust workspace monitor assignments for a different setup.
+- The workspace bar sits at the **bottom**, with a **solid black background**, 28px height, workspace numbers, and app icons.
+- The bar reserves layout space, with an additional 8px bottom gap.
+- Focused-window borders are disabled.
 
-| Key | Action |
-|-----|--------|
-| hyper + . | Next track |
-| hyper + , | Previous track |
-| hyper + / | Play / pause |
+## Keep the repo in sync
 
-## Claude Code Integration
-
-The `claude` stow package adds hooks to `~/.claude/` that integrate Claude Code sessions with SketchyBar. Each workspace with an active Claude session gets a colored background indicator:
-
-- **Purple** -- Claude is actively working (tool use, thinking)
-- **Amber** -- Claude is waiting for user input
-
-### How it works
-
-1. **register-session.sh** (SessionStart) -- registers the session in `/tmp/claude-agents/<workspace>.json` with project name, branch, and Claude's PID
-2. **focus-workspace.sh** (Stop, Notification) -- switches AeroSpace focus to the workspace when Claude needs attention
-3. **session-active.sh** (PreToolUse, UserPromptSubmit) -- flips status to active and updates SketchyBar color
-4. **session-waiting.sh** (Stop) -- flips status to waiting and updates SketchyBar color
-5. **claude_refresh.sh** (SketchyBar plugin, every 5s) -- catches idle sessions via CPU monitoring, cleans up dead processes
-
-### Setup
-
-Copy hooks and merge settings:
+OmniWM writes Settings changes to its live TOML file. Installation uses a copy, not a symlink, so capture changes before committing:
 
 ```bash
-cp claude-hooks/.claude/hooks/*.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/*.sh
+cd ~/config/macrice
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+[[ "$config_home" = /* ]] || config_home="$HOME/.config"
+cp "$config_home/omniwm/settings.toml" omniwm/.config/omniwm/settings.toml
+git diff
 ```
 
-Then merge the hooks config from `claude-hooks/.claude/settings.json.example` into your `~/.claude/settings.json`.
+Review the file for private paths or other personal data before publishing it.
 
-Add to your `.zshrc` so hooks know which workspace they're in:
+## Previous setup
 
-```bash
-if [[ $- == *i* ]] && [[ -z "$AEROSPACE_WS" ]]; then
-  export AEROSPACE_WS=$(aerospace list-workspaces --focused 2>/dev/null)
-fi
-```
+The AeroSpace, SketchyBar, Hammerspoon, Karabiner, and Claude-session hook configs are preserved in Git history, not in the current tree. Their old installer and screenshot were removed. The old Claude workspace/status integration has not been ported to OmniWM.
 
-## Customization
-
-### Workspace names
-
-Edit `aerospace/.config/aerospace/aerospace.toml` to rename workspaces. The default uses numbered workspaces (1-10). You can use named workspaces -- just update both the switching and move-to-workspace bindings.
-
-### App launchers
-
-Edit `hammerspoon/.hammerspoon/init.lua` and modify the `hotApps` table.
-
-### SketchyBar colors
-
-Edit `sketchybar/.config/sketchybar/colors.sh` to change the color scheme.
-
-### Monitor assignment
-
-Edit the `[workspace-to-monitor-force-assignment]` section in `aerospace.toml` to match your monitor setup.
+When migrating an existing machine, quit the old window manager and disable its login item before launching OmniWM. This installer does not remove old apps, shell snippets, or Claude hooks from your home directory.
